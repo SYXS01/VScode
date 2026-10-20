@@ -1,133 +1,227 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R25E2530</title>
+    <title>Document</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            min-height: 100%;
-            background: #e9eef5;
-        }
-
         body {
-            max-width: 900px;
-            margin: 56px auto;
-            padding: 48px;
-            color: #273449;
-            font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
-            line-height: 1.8;
-            background: linear-gradient(145deg, #ffffff, #f8faff);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            border-radius: 24px;
-            box-shadow: 0 24px 70px rgba(39, 58, 86, 0.14);
+            background: linear-gradient(135deg, 
+                #ff0066, #ff6600, #ffcc00, 
+                #33ff66, #33cccc, #3366ff, #9933ff);
+            background-size: 300% 300%;
+            animation: bgFlow 12s ease infinite;
+            margin: 0;
+            padding: 0;
         }
 
-        h1 {
-            margin: 0 0 24px;
-            color: #253c67;
-            font-size: clamp(2rem, 5vw, 3rem);
-            line-height: 1.2;
-            letter-spacing: 0.03em;
-        }
-
-        h1::after {
-            display: block;
-            width: 72px;
-            height: 4px;
-            margin-top: 16px;
-            content: "";
-            background: linear-gradient(90deg, #6688d8, #a88de0);
-            border-radius: 4px;
-        }
-
-        h2 {
-            margin-top: 36px;
-            color: #405d91;
-            font-size: 1.45rem;
-        }
-
-        p {
-            color: #596579;
-        }
-
-        ul {
-            padding: 20px 26px 20px 46px;
-            background: #f2f5fb;
-            border-left: 4px solid #829bd1;
-            border-radius: 12px;
-        }
-
-        li {
-            padding: 4px 0;
-        }
-
-        li::marker {
-            color: #6688d8;
-        }
-
-        img {
-            display: block;
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            margin: 32px auto 0;
-            border: 6px solid #fff;
-            border-radius: 18px;
-            box-shadow: 0 14px 34px rgba(39, 58, 86, 0.2);
-        }
-
-        @media (max-width: 640px) {
-            body {
-                margin: 20px 14px;
-                padding: 28px 22px;
-                border-radius: 18px;
-            }
+        @keyframes bgFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
+        .hero {
+            /* 合并背景：渐变+图片（半透明叠加使文字更易读） */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url("https://th.bing.com/th/id/R.94b4637b8370d99682f9c2e740b571e4?rik=8ec%2b6SUYi35kXA&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn%2fw2048h1152%2f20180213%2feecf-fyrpeie3350622.jpg&ehk=R%2bbLc4VYPS42IS5qc%2bZzWXPRadCfpFfC6aAae%2ftsrJg%3d&risl=&pid=ImgRaw&r=0");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 0 0 30px 30px;
+        }
+ 
+        .hero h1 {
+            font-size: 48px;
+            margin: 10px 0;
+        }
+ 
+        .label {
+            letter-spacing: 3px;
+            font-size: 24px;
+        }
+ 
+        .container {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+ 
+        .card {
+            background-color: white;
+            width: 280px;
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            /* 添加 transition 让 hover 动画平滑 */
+            transition: 0.3s;
+        }
+ 
+        .card h2 {
+            color: #5b5fc7;
+            border-bottom: 2px solid #e5e7ff;
+            padding-bottom: 8px;
+        }
+ 
+        .card ul {
+            padding-left: 20px;
+        }
+ 
+        .card li {
+            margin-bottom: 8px;
+        }
+ 
+        /* hover 效果：向上移动 + 放大 + 阴影更强 */
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+        }
+ 
+        a {
+            color: #5b5fc7;
+            font-weight: bold;
+            text-decoration: none;
+        }
+ 
+        a:hover {
+            text-decoration: underline;
+        }
+ 
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+        }
+        
+        /* 卡片内图片：宽度撑满，圆角，保持比例 */
+        .card img {
+            width: 100%;
+            border-radius: 12px;
+        }
+        
+        /* 所有图片：保持比例不变形（代替原来的 max-height） */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* ========== 响应式设计（主题2） ========== */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 10px;   /* 减少容器内边距 */
+                gap: 16px;            /* 卡片间距变小 */
+            }
+            
+            .card {
+                width: 100%;          /* 卡片占满整行 → 变成1列 */
+                max-width: 300px;     /* 限制最大宽度，避免太宽 */
+                margin: 0 auto;       /* 居中显示 */
+                padding: 16px;        /* 内边距稍减小 */
+            }
+            
+            /* 手机时文字稍微变小 */
+            .card h2 {
+                font-size: 1.2rem;
+            }
+            
+            .card li, .card p, .card th, .card td {
+                font-size: 0.9rem;
+            }
+            
+            .hero h1 {
+                font-size: 32px;      /* 手机时标题缩小 */
+            }
+            
+            .label {
+                font-size: 18px;
+            }
+        }
     </style>
 </head>
+ 
 <body>
-    <h1>My profile 自己介绍 </h1>
-    <p>
-        你好，我是[张兴城]，目前是一名[职业牛马]。我热爱[匡扶大汉事业]，
-        喜欢不断学习和探索新事物。希望通过自己的努力和实践，不断提升自己，
-        在未来的道路上创造更多可能性。
-    </p>
-
-    <h2>关于我</h2>
-    <ul>
-        <li>兴趣爱好：阅读、学习新技术、旅行和摄影</li>
-        <li>性格特点：乐观、认真、愿意接受挑战</li>
-        <li>未来目标：不断提升专业能力，参与更多实践项目</li>
-    </ul>
-
-    
-<h2>SKILL</h2>
-<ul>
-  <li>HTML / CSS / JavaScript</li>
-  <li>Python</li>
-  <li>Java</li>
-</ul>
-
-<h2>LIKING</h2>
-<ul>
-  <li>ゲーム</li>
-  <li>音楽</li>
-  <li>写真</li>
-</ul>
-
-
-    <p>
-        我也喜欢和他人交流合作，关注团队协作和问题解决的过程。
-        在日常学习中，我会主动总结经验，并不断尝试新的方法来提升效率和质量。
-        我相信只要保持好奇心和坚持，未来一定会有更多可能性。
-    </p>
-
-    <img src="./1.jpg" alt="profile picture" width="600">
+    <div class="page">
+        <header class="hero">
+            <p class="label">My Profile Site</p>
+            <h1>張 浩然</h1>
+            <p>HTMLとCSSで作る自己紹介ページ</p>
+        </header>
+        <main class="container">
+            <div class="card">
+                <img src="https://th.bing.com/th/id/R.50d5daee6046cee0ddc9fd5f91a9f345?rik=z69BfRreXBOAMw&riu=http%3a%2f%2fdimg01.c-ctrip.com%2fimages%2ftg%2f004%2f819%2f124%2f22f589dd452d45729776b1d2c13e7cef_C_770_370.jpg&ehk=NnvCZ9tjUvyvic97LpDQ0p%2biO9v5q5nRgYARzG9jVuQ%3d&risl=&pid=ImgRaw&r=0">
+                <h2>四川</h2>
+            </div>
+            <div class="card">
+                <h2>趣味</h2>
+                <ul>
+                    <li>登山</li>
+                    <li>小説</li>
+                    <li>アメリカのドラマ</li>
+                    <li>釣り</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>プロフィール</h2>
+                <table>
+                    <tr>
+                        <th>項目</th>
+                        <th>内容</th>
+                    </tr>
+                    <tr>
+                        <td>名前</td>
+                        <td>張</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card">
+                <h2>好きな食べ物</h2>
+                <ul>
+                    <li>唐揚</li>
+                    <li>卵チャーハン</li>
+                    <li>火鍋</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>出身</h2>
+                <ul>
+                    <li>中国</li>
+                    <li>四川省</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>学科</h2>
+                <ul>
+                    <li>農学入門</li>
+                    <li>日本近代文学研究</li>
+                    <li>天文学</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>将来の夢</h2>
+                <ul>
+                    <li>南極に旅行に行く</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>リンク</h2>
+                <p>学校のWebサイトを見ることができます。</p>
+                <p>
+                    <a href="https://www.kcg.ac.jp/">KCGを見る</a>
+                </p>
+            </div>
+            <div class="card">
+                <h2>画像</h2>
+                <img src="https://cdn.pixabay.com/photo/2019/12/19/17/52/antarctica-4706749_1280.jpg" alt="">
+            </div>
+        </main>
+        <footer class="footer">
+            <p>© 2026 My Profile Site</p>
+        </footer>
+    </div>
 </body>
+
 </html>
